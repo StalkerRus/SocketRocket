@@ -35,7 +35,9 @@
 #import "SRError.h"
 #import "NSURLRequest+SRWebSocket.h"
 #import "NSRunLoop+SRWebSocket.h"
-#import "NSString+UTF8.h"
+#import "SRFrameFactory.h"
+#import "SRNoICUFrameFactory.h"
+#import "SRTextFrame.h"
 
 #if !__has_feature(objc_arc) 
 #error SocketRocket must be compiled with ARC enabled
@@ -75,7 +77,6 @@ typedef struct {
 
 static NSString *const SRWebSocketAppendToSecKeyString = @"258EAFA5-E914-47DA-95CA-C5AB0DC85B11";
 
-static inline int32_t validate_dispatch_data_partial_string(NSData *data);
 static inline void SRFastLog(NSString *format, ...);
 
 static uint8_t const SRWebSocketProtocolVersion = 13;
@@ -186,6 +187,12 @@ NSString *const SRHTTPResponseErrorKey = @"HTTPResponseStatusCode";
     _consumerPool = [[SRIOConsumerPool alloc] init];
 
     _scheduledRunloops = [[NSMutableSet alloc] init];
+
+#ifdef HAS_ICU
+    _frameFactory = [[SRFrameFactory alloc] init];
+#else
+    _frameFactory = [[SRNoICUFrameFactory alloc] init];
+#endif
 
     [self _initializeStreams];
 
@@ -786,7 +793,7 @@ static inline BOOL closeCodeIsValid(int closeCode) {
     //otherwise there can be misbehaviours when value at the pointer is changed
     switch (opcode) {
         case SROpCodeTextFrame: {
-            NSString *string = [NSString lossyUTF8StringWithData:frameData];
+            NSString *string = [[[self frameFactory] textFrameWithData:frameData] value];
             if (!string && frameData) {
                 [self closeWithCode:SRStatusCodeInvalidUTF8 reason:@"Text frames must be valid UTF-8."];
                 dispatch_async(_workQueue, ^{
@@ -1261,7 +1268,7 @@ static const char CRLFCRLFBytes[] = {'\r', '\n', '\r', '\n'};
                     size_t scanSize = currentDataSize - _currentStringScanPosition;
                     
                     NSData *scan_data = [_currentFrameData subdataWithRange:NSMakeRange(_currentStringScanPosition, scanSize)];
-                    int32_t valid_utf8_size = validate_dispatch_data_partial_string(scan_data);
+                    int32_t valid_utf8_size = [[self.frameFactory textFrameWithData:scan_data] length];
                     
                     if (valid_utf8_size == -1) {
                         [self closeWithCode:SRStatusCodeInvalidUTF8 reason:@"Text frames must be valid UTF-8"];
@@ -1585,77 +1592,3 @@ static inline void SRFastLog(NSString *format, ...)  {
     NSLog(@"[SR] %@", formattedString);
 #endif
 }
-
-
-#ifdef HAS_ICU
-
-static inline int32_t validate_dispatch_data_partial_string(NSData *data) {
-    if ([data length] > INT32_MAX) {
-        // INT32_MAX is the limit so long as this Framework is using 32 bit ints everywhere.
-        return -1;
-    }
-
-    int32_t size = (int32_t)[data length];
-
-    const void * contents = [data bytes];
-    const uint8_t *str = (const uint8_t *)contents;
-
-    UChar32 codepoint = 1;
-    int32_t offset = 0;
-    int32_t lastOffset = 0;
-    while(offset < size && codepoint > 0)  {
-        lastOffset = offset;
-        U8_NEXT(str, offset, size, codepoint);
-
-        UChar32 internalCodepoint = codepoint;
-        while (offset < size && (internalCodepoint > 0x10ffff || internalCodepoint == -1)) {
-            offset += 1;
-            lastOffset = offset;
-            U8_NEXT(str, offset, size, internalCodepoint);
-        }
-        codepoint = internalCodepoint;
-    }
-
-    if (codepoint == -1) {
-        // Check to see if the last byte is valid or whether it was just continuing
-        if (!U8_IS_LEAD(str[lastOffset]) || U8_COUNT_TRAIL_BYTES(str[lastOffset]) + lastOffset < (int32_t)size) {
-            size = -1;
-        } else {
-            uint8_t leadByte = str[lastOffset];
-            U8_MASK_LEAD_BYTE(leadByte, U8_COUNT_TRAIL_BYTES(leadByte));
-            for (int i = lastOffset + 1; i < offset; i++) {
-                if (U8_IS_SINGLE(str[i]) || U8_IS_LEAD(str[i]) || !U8_IS_TRAIL(str[i])) {
-                    size = -1;
-                }
-            }
-
-            if (size != -1) {
-                size = lastOffset;
-            }
-        }
-    }
-
-    if (size != -1 && ![NSString lossyUTF8StringWithData:data]) {
-        size = -1;
-    }
-    
-    return size;
-}
-
-#else
-
-// This is a hack, and probably not optimal
-static inline int32_t validate_dispatch_data_partial_string(NSData *data) {
-    static const int maxCodepointSize = 3;
-    
-    for (int i = 0; i < maxCodepointSize; i++) {
-        NSString *str = [[NSString alloc] initWithBytesNoCopy:(char *)data.bytes length:data.length - i encoding:NSUTF8StringEncoding freeWhenDone:NO];
-        if (str) {
-            return (int32_t)data.length - i;
-        }
-    }
-    
-    return -1;
-}
-
-#endif

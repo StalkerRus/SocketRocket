@@ -10,5 +10,7 @@
 //
 
 #import <SocketRocket/SRWebSocket.h>
+#import <SocketRocket/SRTextFrame.h>
+#import <SocketRocket/SRFrameFactoryProtocol.h>
 #import <SocketRocket/NSRunLoop+SRWebSocket.h>
 #import <SocketRocket/NSURLRequest+SRWebSocket.h>
