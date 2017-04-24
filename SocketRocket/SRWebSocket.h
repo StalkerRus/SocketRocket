@@ -12,6 +12,8 @@
 #import <Foundation/Foundation.h>
 #import <Security/SecCertificate.h>
 
+@protocol SRFrameFactoryProtocol;
+
 NS_ASSUME_NONNULL_BEGIN
 
 typedef NS_ENUM(NSInteger, SRReadyState) {
@@ -119,6 +121,11 @@ extern NSString *const SRHTTPResponseErrorKey;
  For DEBUG builds this flag is ignored, and SSL connections are allowed regardless of the certificate trust configuration
  */
 @property (nonatomic, assign, readonly) BOOL allowsUntrustedSSLCertificates;
+
+/**
+ Text frame factory. Defaults to SRTextFrameFactory.
+ */
+@property (nonnull, nonatomic, strong) id<SRFrameFactoryProtocol> frameFactory;
 
 ///--------------------------------------
 #pragma mark - Constructors
