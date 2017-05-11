@@ -12,7 +12,7 @@
 #import <Foundation/Foundation.h>
 #import <Security/SecCertificate.h>
 
-@protocol SRFrameFactoryProtocol;
+@class SRTextFrame;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -46,6 +46,8 @@ typedef enum SRStatusCode : NSInteger {
     // 3000–3999: Available for use by libraries and frameworks. May not be used by applications. Available for registration at the IANA via first-come, first-serve.
     // 4000–4999: Available for use by applications.
 } SRStatusCode;
+
+typedef SRTextFrame * _Nullable (^SRTextFrameContructionBlock)(NSData *data);
 
 @class SRWebSocket;
 
@@ -123,9 +125,9 @@ extern NSString *const SRHTTPResponseErrorKey;
 @property (nonatomic, assign, readonly) BOOL allowsUntrustedSSLCertificates;
 
 /**
- Text frame factory. Defaults to SRTextFrameFactory.
+ Text frame creation block.
  */
-@property (nonnull, nonatomic, strong) id<SRFrameFactoryProtocol> frameFactory;
+@property (nonnull, nonatomic, copy) SRTextFrameContructionBlock textFrameBlock;
 
 ///--------------------------------------
 #pragma mark - Constructors

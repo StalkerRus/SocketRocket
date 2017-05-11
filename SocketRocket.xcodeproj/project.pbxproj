@@ -106,28 +106,8 @@
 		DF1B96C21EAE928B007EFF24 /* SRNoICUTextFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = DF1B96BC1EAE928B007EFF24 /* SRNoICUTextFrame.m */; };
 		DF1B96C31EAE928B007EFF24 /* SRNoICUTextFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = DF1B96BC1EAE928B007EFF24 /* SRNoICUTextFrame.m */; };
 		DF1B96C41EAE928B007EFF24 /* SRNoICUTextFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = DF1B96BC1EAE928B007EFF24 /* SRNoICUTextFrame.m */; };
-		DF1B96D41EAF2D72007EFF24 /* SRFrameFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = DF1B96D01EAF2D72007EFF24 /* SRFrameFactory.h */; };
-		DF1B96D51EAF2D72007EFF24 /* SRFrameFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = DF1B96D01EAF2D72007EFF24 /* SRFrameFactory.h */; };
-		DF1B96D61EAF2D72007EFF24 /* SRFrameFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = DF1B96D01EAF2D72007EFF24 /* SRFrameFactory.h */; };
-		DF1B96D71EAF2D72007EFF24 /* SRFrameFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = DF1B96D01EAF2D72007EFF24 /* SRFrameFactory.h */; };
-		DF1B96D81EAF2D72007EFF24 /* SRFrameFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = DF1B96D11EAF2D72007EFF24 /* SRFrameFactory.m */; };
-		DF1B96D91EAF2D72007EFF24 /* SRFrameFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = DF1B96D11EAF2D72007EFF24 /* SRFrameFactory.m */; };
-		DF1B96DA1EAF2D72007EFF24 /* SRFrameFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = DF1B96D11EAF2D72007EFF24 /* SRFrameFactory.m */; };
-		DF1B96DB1EAF2D72007EFF24 /* SRFrameFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = DF1B96D11EAF2D72007EFF24 /* SRFrameFactory.m */; };
-		DF1B96DC1EAF2D72007EFF24 /* SRNoICUFrameFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = DF1B96D21EAF2D72007EFF24 /* SRNoICUFrameFactory.h */; };
-		DF1B96DD1EAF2D72007EFF24 /* SRNoICUFrameFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = DF1B96D21EAF2D72007EFF24 /* SRNoICUFrameFactory.h */; };
-		DF1B96DE1EAF2D72007EFF24 /* SRNoICUFrameFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = DF1B96D21EAF2D72007EFF24 /* SRNoICUFrameFactory.h */; };
-		DF1B96DF1EAF2D72007EFF24 /* SRNoICUFrameFactory.h in Headers */ = {isa = PBXBuildFile; fileRef = DF1B96D21EAF2D72007EFF24 /* SRNoICUFrameFactory.h */; };
-		DF1B96E01EAF2D72007EFF24 /* SRNoICUFrameFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = DF1B96D31EAF2D72007EFF24 /* SRNoICUFrameFactory.m */; };
-		DF1B96E11EAF2D72007EFF24 /* SRNoICUFrameFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = DF1B96D31EAF2D72007EFF24 /* SRNoICUFrameFactory.m */; };
-		DF1B96E21EAF2D72007EFF24 /* SRNoICUFrameFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = DF1B96D31EAF2D72007EFF24 /* SRNoICUFrameFactory.m */; };
-		DF1B96E31EAF2D72007EFF24 /* SRNoICUFrameFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = DF1B96D31EAF2D72007EFF24 /* SRNoICUFrameFactory.m */; };
-		DF9B7AB91EAF62F00011D07E /* SRFrameFactoryProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = DF9B7AB61EAF62F00011D07E /* SRFrameFactoryProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF9B7ABA1EAF62F00011D07E /* SRTextFrame.h in Headers */ = {isa = PBXBuildFile; fileRef = DF9B7AB71EAF62F00011D07E /* SRTextFrame.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF9B7ABB1EAF62F00011D07E /* SRTextFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = DF9B7AB81EAF62F00011D07E /* SRTextFrame.m */; };
-		DF9B7ABC1EAF62FB0011D07E /* SRFrameFactoryProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = DF9B7AB61EAF62F00011D07E /* SRFrameFactoryProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DF9B7ABD1EAF62FB0011D07E /* SRFrameFactoryProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = DF9B7AB61EAF62F00011D07E /* SRFrameFactoryProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DF9B7ABE1EAF62FC0011D07E /* SRFrameFactoryProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = DF9B7AB61EAF62F00011D07E /* SRFrameFactoryProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF9B7ABF1EAF630A0011D07E /* SRTextFrame.h in Headers */ = {isa = PBXBuildFile; fileRef = DF9B7AB71EAF62F00011D07E /* SRTextFrame.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF9B7AC01EAF630B0011D07E /* SRTextFrame.h in Headers */ = {isa = PBXBuildFile; fileRef = DF9B7AB71EAF62F00011D07E /* SRTextFrame.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DF9B7AC11EAF630C0011D07E /* SRTextFrame.h in Headers */ = {isa = PBXBuildFile; fileRef = DF9B7AB71EAF62F00011D07E /* SRTextFrame.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -209,11 +189,6 @@
 		81CD05FC1CEEC65D00497F47 /* NSRunLoop+SRWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSRunLoop+SRWebSocket.m"; sourceTree = "<group>"; };
 		DF1B96BB1EAE928B007EFF24 /* SRNoICUTextFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRNoICUTextFrame.h; sourceTree = "<group>"; };
 		DF1B96BC1EAE928B007EFF24 /* SRNoICUTextFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRNoICUTextFrame.m; sourceTree = "<group>"; };
-		DF1B96D01EAF2D72007EFF24 /* SRFrameFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRFrameFactory.h; sourceTree = "<group>"; };
-		DF1B96D11EAF2D72007EFF24 /* SRFrameFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRFrameFactory.m; sourceTree = "<group>"; };
-		DF1B96D21EAF2D72007EFF24 /* SRNoICUFrameFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRNoICUFrameFactory.h; sourceTree = "<group>"; };
-		DF1B96D31EAF2D72007EFF24 /* SRNoICUFrameFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRNoICUFrameFactory.m; sourceTree = "<group>"; };
-		DF9B7AB61EAF62F00011D07E /* SRFrameFactoryProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRFrameFactoryProtocol.h; sourceTree = "<group>"; };
 		DF9B7AB71EAF62F00011D07E /* SRTextFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SRTextFrame.h; sourceTree = "<group>"; };
 		DF9B7AB81EAF62F00011D07E /* SRTextFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SRTextFrame.m; sourceTree = "<group>"; };
 		F61A0DC71625F44D00365EBD /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "en.lproj/Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -428,17 +403,6 @@
 			path = TextFrame;
 			sourceTree = "<group>";
 		};
-		DF1B96CF1EAF2D05007EFF24 /* FrameFactory */ = {
-			isa = PBXGroup;
-			children = (
-				DF1B96D01EAF2D72007EFF24 /* SRFrameFactory.h */,
-				DF1B96D11EAF2D72007EFF24 /* SRFrameFactory.m */,
-				DF1B96D21EAF2D72007EFF24 /* SRNoICUFrameFactory.h */,
-				DF1B96D31EAF2D72007EFF24 /* SRNoICUFrameFactory.m */,
-			);
-			path = FrameFactory;
-			sourceTree = "<group>";
-		};
 		F62417EA14D52F3C003CE997 /* TestChat */ = {
 			isa = PBXGroup;
 			children = (
@@ -529,11 +493,9 @@
 		F6B208321450F597009315AF /* SocketRocket */ = {
 			isa = PBXGroup;
 			children = (
-				DF1B96CF1EAF2D05007EFF24 /* FrameFactory */,
 				DF1B96A61EAE7CCC007EFF24 /* TextFrame */,
 				81B31C0D1CDC404100D86D43 /* Internal */,
 				555E0EB11C51E56D00E6BB92 /* SocketRocket.h */,
-				DF9B7AB61EAF62F00011D07E /* SRFrameFactoryProtocol.h */,
 				F6A12CCF145119B700C1D980 /* SRWebSocket.h */,
 				F6A12CD0145119B700C1D980 /* SRWebSocket.m */,
 				81CD05D51CEEC47300497F47 /* NSURLRequest+SRWebSocket.h */,
@@ -556,18 +518,15 @@
 			files = (
 				DF9B7ABF1EAF630A0011D07E /* SRTextFrame.h in Headers */,
 				81B22EE51CE43ECC0073C636 /* SRURLUtilities.h in Headers */,
-				DF1B96DD1EAF2D72007EFF24 /* SRNoICUFrameFactory.h in Headers */,
 				81B31C151CDC404100D86D43 /* SRIOConsumer.h in Headers */,
 				81CD05FE1CEEC65D00497F47 /* NSRunLoop+SRWebSocket.h in Headers */,
 				81CD05D81CEEC47300497F47 /* NSURLRequest+SRWebSocket.h in Headers */,
 				81B31C1D1CDC404100D86D43 /* SRIOConsumerPool.h in Headers */,
 				2D42277F1BB4365C000C1A6C /* SRWebSocket.h in Headers */,
 				81B31C2E1CDC406B00D86D43 /* SRHash.h in Headers */,
-				DF9B7ABC1EAF62FB0011D07E /* SRFrameFactoryProtocol.h in Headers */,
 				811934BE1CDAF725003AB243 /* SocketRocket.h in Headers */,
 				817995871CE139700084DA37 /* SRDelegateController.h in Headers */,
 				DF1B96BE1EAE928B007EFF24 /* SRNoICUTextFrame.h in Headers */,
-				DF1B96D51EAF2D72007EFF24 /* SRFrameFactory.h in Headers */,
 				81B22EC61CE42D7E0073C636 /* SRError.h in Headers */,
 				81B31C601CDC444900D86D43 /* SRRunLoopThread.h in Headers */,
 			);
@@ -579,18 +538,15 @@
 			files = (
 				DF9B7AC11EAF630C0011D07E /* SRTextFrame.h in Headers */,
 				81B22EE71CE43ECC0073C636 /* SRURLUtilities.h in Headers */,
-				DF1B96DF1EAF2D72007EFF24 /* SRNoICUFrameFactory.h in Headers */,
 				81B31C171CDC404100D86D43 /* SRIOConsumer.h in Headers */,
 				81CD06001CEEC65D00497F47 /* NSRunLoop+SRWebSocket.h in Headers */,
 				81CD05DA1CEEC47300497F47 /* NSURLRequest+SRWebSocket.h in Headers */,
 				81B31C1F1CDC404100D86D43 /* SRIOConsumerPool.h in Headers */,
 				3345DC8A1C52ACD70083CCB8 /* SRWebSocket.h in Headers */,
 				81B31C301CDC406B00D86D43 /* SRHash.h in Headers */,
-				DF9B7ABE1EAF62FC0011D07E /* SRFrameFactoryProtocol.h in Headers */,
 				811934C01CDAF726003AB243 /* SocketRocket.h in Headers */,
 				817995891CE139700084DA37 /* SRDelegateController.h in Headers */,
 				DF1B96C01EAE928B007EFF24 /* SRNoICUTextFrame.h in Headers */,
-				DF1B96D71EAF2D72007EFF24 /* SRFrameFactory.h in Headers */,
 				81B22EC81CE42D7E0073C636 /* SRError.h in Headers */,
 				81B31C621CDC444900D86D43 /* SRRunLoopThread.h in Headers */,
 			);
@@ -602,18 +558,15 @@
 			files = (
 				DF9B7AC01EAF630B0011D07E /* SRTextFrame.h in Headers */,
 				81B22EE61CE43ECC0073C636 /* SRURLUtilities.h in Headers */,
-				DF1B96DE1EAF2D72007EFF24 /* SRNoICUFrameFactory.h in Headers */,
 				81B31C161CDC404100D86D43 /* SRIOConsumer.h in Headers */,
 				81CD05FF1CEEC65D00497F47 /* NSRunLoop+SRWebSocket.h in Headers */,
 				81CD05D91CEEC47300497F47 /* NSURLRequest+SRWebSocket.h in Headers */,
 				81B31C1E1CDC404100D86D43 /* SRIOConsumerPool.h in Headers */,
 				F668C8AA153E92F90044DBAC /* SRWebSocket.h in Headers */,
 				81B31C2F1CDC406B00D86D43 /* SRHash.h in Headers */,
-				DF9B7ABD1EAF62FB0011D07E /* SRFrameFactoryProtocol.h in Headers */,
 				811934BC1CDAF725003AB243 /* SocketRocket.h in Headers */,
 				817995881CE139700084DA37 /* SRDelegateController.h in Headers */,
 				DF1B96BF1EAE928B007EFF24 /* SRNoICUTextFrame.h in Headers */,
-				DF1B96D61EAF2D72007EFF24 /* SRFrameFactory.h in Headers */,
 				81B22EC71CE42D7E0073C636 /* SRError.h in Headers */,
 				81B31C611CDC444900D86D43 /* SRRunLoopThread.h in Headers */,
 			);
@@ -625,18 +578,15 @@
 			files = (
 				DF9B7ABA1EAF62F00011D07E /* SRTextFrame.h in Headers */,
 				81B22EE41CE43ECC0073C636 /* SRURLUtilities.h in Headers */,
-				DF1B96DC1EAF2D72007EFF24 /* SRNoICUFrameFactory.h in Headers */,
 				81B31C141CDC404100D86D43 /* SRIOConsumer.h in Headers */,
 				81CD05FD1CEEC65D00497F47 /* NSRunLoop+SRWebSocket.h in Headers */,
 				81CD05D71CEEC47300497F47 /* NSURLRequest+SRWebSocket.h in Headers */,
 				81B31C1C1CDC404100D86D43 /* SRIOConsumerPool.h in Headers */,
 				F6A12CD1145119B700C1D980 /* SRWebSocket.h in Headers */,
 				81B31C2D1CDC406B00D86D43 /* SRHash.h in Headers */,
-				DF9B7AB91EAF62F00011D07E /* SRFrameFactoryProtocol.h in Headers */,
 				555E0EB41C51E57A00E6BB92 /* SocketRocket.h in Headers */,
 				817995861CE139700084DA37 /* SRDelegateController.h in Headers */,
 				DF1B96BD1EAE928B007EFF24 /* SRNoICUTextFrame.h in Headers */,
-				DF1B96D41EAF2D72007EFF24 /* SRFrameFactory.h in Headers */,
 				81B22EC51CE42D7E0073C636 /* SRError.h in Headers */,
 				81B31C5F1CDC444900D86D43 /* SRRunLoopThread.h in Headers */,
 			);
@@ -829,9 +779,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF1B96E11EAF2D72007EFF24 /* SRNoICUFrameFactory.m in Sources */,
 				81CD05DC1CEEC47300497F47 /* NSURLRequest+SRWebSocket.m in Sources */,
-				DF1B96D91EAF2D72007EFF24 /* SRFrameFactory.m in Sources */,
 				DF1B96C21EAE928B007EFF24 /* SRNoICUTextFrame.m in Sources */,
 				81B22ECA1CE42D7E0073C636 /* SRError.m in Sources */,
 				81B31C191CDC404100D86D43 /* SRIOConsumer.m in Sources */,
@@ -850,9 +798,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF1B96E31EAF2D72007EFF24 /* SRNoICUFrameFactory.m in Sources */,
 				81CD05DE1CEEC47300497F47 /* NSURLRequest+SRWebSocket.m in Sources */,
-				DF1B96DB1EAF2D72007EFF24 /* SRFrameFactory.m in Sources */,
 				DF1B96C41EAE928B007EFF24 /* SRNoICUTextFrame.m in Sources */,
 				81B22ECC1CE42D7E0073C636 /* SRError.m in Sources */,
 				81B31C1B1CDC404100D86D43 /* SRIOConsumer.m in Sources */,
@@ -882,9 +828,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF1B96E21EAF2D72007EFF24 /* SRNoICUFrameFactory.m in Sources */,
 				81CD05DD1CEEC47300497F47 /* NSURLRequest+SRWebSocket.m in Sources */,
-				DF1B96DA1EAF2D72007EFF24 /* SRFrameFactory.m in Sources */,
 				DF1B96C31EAE928B007EFF24 /* SRNoICUTextFrame.m in Sources */,
 				81B22ECB1CE42D7E0073C636 /* SRError.m in Sources */,
 				81B31C1A1CDC404100D86D43 /* SRIOConsumer.m in Sources */,
@@ -903,9 +847,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DF1B96E01EAF2D72007EFF24 /* SRNoICUFrameFactory.m in Sources */,
 				81CD05DB1CEEC47300497F47 /* NSURLRequest+SRWebSocket.m in Sources */,
-				DF1B96D81EAF2D72007EFF24 /* SRFrameFactory.m in Sources */,
 				DF1B96C11EAE928B007EFF24 /* SRNoICUTextFrame.m in Sources */,
 				81B22EC91CE42D7E0073C636 /* SRError.m in Sources */,
 				81B31C181CDC404100D86D43 /* SRIOConsumer.m in Sources */,

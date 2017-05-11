@@ -35,9 +35,8 @@
 #import "SRError.h"
 #import "NSURLRequest+SRWebSocket.h"
 #import "NSRunLoop+SRWebSocket.h"
-#import "SRFrameFactory.h"
-#import "SRNoICUFrameFactory.h"
 #import "SRTextFrame.h"
+#import "SRNoICUTextFrame.h"
 
 #if !__has_feature(objc_arc) 
 #error SocketRocket must be compiled with ARC enabled
@@ -189,9 +188,13 @@ NSString *const SRHTTPResponseErrorKey = @"HTTPResponseStatusCode";
     _scheduledRunloops = [[NSMutableSet alloc] init];
 
 #ifdef HAS_ICU
-    _frameFactory = [[SRFrameFactory alloc] init];
+    _textFrameBlock = ^(NSData *data) {
+        return [[SRTextFrame alloc] initWithData:data];
+    };
 #else
-    _frameFactory = [[SRNoICUFrameFactory alloc] init];
+    _textFrameBlock = ^(NSData *data) {
+        return [[SRNoICUTextFrame alloc] initWithData:data];
+    };
 #endif
 
     [self _initializeStreams];
@@ -793,7 +796,7 @@ static inline BOOL closeCodeIsValid(int closeCode) {
     //otherwise there can be misbehaviours when value at the pointer is changed
     switch (opcode) {
         case SROpCodeTextFrame: {
-            NSString *string = [[[self frameFactory] textFrameWithData:frameData] value];
+            NSString *string = [self.textFrameBlock(frameData) value];
             if (!string && frameData) {
                 [self closeWithCode:SRStatusCodeInvalidUTF8 reason:@"Text frames must be valid UTF-8."];
                 dispatch_async(_workQueue, ^{
@@ -1268,7 +1271,7 @@ static const char CRLFCRLFBytes[] = {'\r', '\n', '\r', '\n'};
                     size_t scanSize = currentDataSize - _currentStringScanPosition;
                     
                     NSData *scan_data = [_currentFrameData subdataWithRange:NSMakeRange(_currentStringScanPosition, scanSize)];
-                    int32_t valid_utf8_size = [[self.frameFactory textFrameWithData:scan_data] length];
+                    int32_t valid_utf8_size = [self.textFrameBlock(scan_data) length];
                     
                     if (valid_utf8_size == -1) {
                         [self closeWithCode:SRStatusCodeInvalidUTF8 reason:@"Text frames must be valid UTF-8"];
