@@ -42,7 +42,7 @@
 
 - (int32_t)length
 {
-    if ([self.data length] > INT32_MAX) {
+    if (self.data.length > INT32_MAX) {
         // INT32_MAX is the limit so long as this Framework is using 32 bit ints everywhere.
         return -1;
     }
