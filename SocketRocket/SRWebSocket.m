@@ -187,15 +187,13 @@ NSString *const SRHTTPResponseErrorKey = @"HTTPResponseStatusCode";
 
     _scheduledRunloops = [[NSMutableSet alloc] init];
 
+    _textFrameBlock = ^(NSData *data) {
 #ifdef HAS_ICU
-    _textFrameBlock = ^(NSData *data) {
         return [[SRTextFrame alloc] initWithData:data];
-    };
 #else
-    _textFrameBlock = ^(NSData *data) {
         return [[SRNoICUTextFrame alloc] initWithData:data];
-    };
 #endif
+    };
 
     [self _initializeStreams];
 
