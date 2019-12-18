@@ -145,6 +145,10 @@ static NSString *newSHA1String(const char *bytes, size_t length) {
 NSString *const SRWebSocketErrorDomain = @"SRWebSocketErrorDomain";
 NSString *const SRHTTPResponseErrorKey = @"HTTPResponseStatusCode";
 
+NSUInteger const SRWebSocketErrorInvalidCertCode = 23556;
+NSString *const SRWebSocketErrorNewCertKey = @"SRWebSocketErrorNewCertKey";
+
+
 // Returns number of bytes consumed. Returning 0 means you didn't match.
 // Sends bytes to callback handler;
 typedef size_t (^stream_scanner)(NSData *collected_data);
@@ -222,6 +226,7 @@ typedef void (^data_callback)(SRWebSocket *webSocket,  NSData *data);
     NSString *_basicAuthorizationString;
     
     BOOL _pinnedCertFound;
+    BOOL _certificateExtracted;
     
     uint8_t _currentReadMaskKey[4];
     size_t _currentReadMaskOffset;
@@ -1526,9 +1531,16 @@ static const size_t SRFrameHeaderOverhead = 32;
             }
             
             if (!_pinnedCertFound) {
+                NSArray<NSData *> *certificates = [self certificatesFromStream:aStream];
                 dispatch_async(_workQueue, ^{
-                    NSDictionary *userInfo = @{ NSLocalizedDescriptionKey : @"Invalid server cert" };
-                    [weakSelf _failWithError:[NSError errorWithDomain:@"org.lolrus.SocketRocket" code:23556 userInfo:userInfo]];
+                    NSDictionary *userInfo = @{
+                        NSLocalizedDescriptionKey : @"Invalid server cert",
+                        SRWebSocketErrorNewCertKey : certificates
+                    };
+                    NSError *error = [NSError errorWithDomain:@"org.lolrus.SocketRocket"
+                                                         code:SRWebSocketErrorInvalidCertCode
+                                                     userInfo:userInfo];
+                    [weakSelf _failWithError:error];
                 });
                 return;
             } else if (aStream == _outputStream) {
@@ -1537,6 +1549,18 @@ static const size_t SRFrameHeaderOverhead = 32;
                 });
             }
         }
+    }
+
+    if (_secure && !_certificateExtracted && (eventCode == NSStreamEventHasBytesAvailable || eventCode == NSStreamEventHasSpaceAvailable)) {
+        NSArray<NSData *> *certificates = [self certificatesFromStream:aStream];
+        if (certificates.count > 0) {
+            [self _performDelegateBlock:^{
+                if ([self.delegate respondsToSelector:@selector(webSocket:didReceiveCertificateData:)]) {
+                    [self.delegate webSocket:self didReceiveCertificateData:certificates];
+                };
+            }];
+        }
+        _certificateExtracted = true;
     }
 
     dispatch_async(_workQueue, ^{
@@ -1559,6 +1583,7 @@ static const size_t SRFrameHeaderOverhead = 32;
                 if ((!_secure || !usingPinnedCerts) && self.readyState == SR_CONNECTING && aStream == _inputStream) {
                     [self didConnect];
                 }
+
                 [self _pumpWriting];
                 [self _pumpScanner];
                 break;
@@ -1633,6 +1658,21 @@ static const size_t SRFrameHeaderOverhead = 32;
                 SRFastLog(@"(default)  %@", aStream);
                 break;
         }
+}
+
+- (NSArray<NSData *> *)certificatesFromStream:(NSStream *)aStream
+{
+    NSMutableArray<NSData *> *certificates = [[NSMutableArray alloc] init];
+    SecTrustRef secTrust = (__bridge SecTrustRef)[aStream propertyForKey:(__bridge id)kCFStreamPropertySSLPeerTrust];
+    if (secTrust != nil) {
+        NSInteger numCerts = SecTrustGetCertificateCount(secTrust);
+        for (NSInteger i = 0; i < numCerts; i++) {
+            SecCertificateRef cert = SecTrustGetCertificateAtIndex(secTrust, i);
+            NSData *certData = CFBridgingRelease(SecCertificateCopyData(cert));
+            [certificates addObject:certData];
+        }
+    }
+    return [certificates copy];
 }
 
 @end

@@ -53,6 +53,9 @@ typedef enum SRStatusCode : NSInteger {
 extern NSString *const SRWebSocketErrorDomain;
 extern NSString *const SRHTTPResponseErrorKey;
 
+extern NSUInteger const SRWebSocketErrorInvalidCertCode;
+extern NSString *const SRWebSocketErrorNewCertKey;
+
 #pragma mark - SRWebSocketDelegate
 
 @protocol SRWebSocketDelegate;
@@ -126,6 +129,11 @@ extern NSString *const SRHTTPResponseErrorKey;
 
 // Return YES to convert messages sent as Text to an NSString. Return NO to skip NSData -> NSString conversion for Text messages. Defaults to YES.
 - (BOOL)webSocketShouldConvertTextFrameToString:(SRWebSocket *)webSocket;
+
+/**
+ This is a callback for getting current certificate for later pinning
+ */
+- (void)webSocket:(SRWebSocket *)webSocket didReceiveCertificateData:(nullable NSArray<NSData *> *)certificates;
 
 @end
 
